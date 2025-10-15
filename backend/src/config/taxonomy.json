@@ -1,0 +1,17 @@
+{
+  "genres": [
+    { "name": "Chill spots", "keywords": ["chill", "relax", "vibes", "cozy", "hangout"] },
+    { "name": "Eat with friends", "keywords": ["restaurant", "eat", "brunch", "dinner", "food"] },
+    { "name": "Nightlife", "keywords": ["bar", "club", "dj", "live music", "lounge"] },
+    { "name": "Coffee & Tea", "keywords": ["coffee", "latte", "espresso", "tea", "cafe"] },
+    { "name": "Outdoors & Walks", "keywords": ["park", "trail", "walk", "outdoor", "scenic"] },
+    { "name": "Shopping & Thrifting", "keywords": ["thrift", "vintage", "shop", "boutique", "market"] }
+  ],
+  "experiences": [
+    { "name": "Coffee", "keywords": ["coffee", "espresso", "cold brew", "latte"] },
+    { "name": "Thrifting", "keywords": ["thrift", "vintage", "goodwill", "secondhand"] },
+    { "name": "Live Music", "keywords": ["live music", "band", "concert", "dj"] },
+    { "name": "Great Views", "keywords": ["rooftop", "view", "skyline"] },
+    { "name": "Date Night", "keywords": ["romantic", "date", "wine"] }
+  ]
+}
