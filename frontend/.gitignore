@@ -1,0 +1,136 @@
+####################################
+# 🧱 GLOBAL / COMMON
+####################################
+*.class
+*.log
+*.pyc
+*.swp
+*.tmp
+*.bak
+*.zip
+*.tar
+.DS_Store
+Thumbs.db
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IDEs
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+####################################
+# 🦋 FLUTTER / FRONTEND (Dart + Android + iOS + Web)
+####################################
+**/frontend/.dart_tool/
+**/frontend/.packages
+**/frontend/.pub-cache/
+**/frontend/.pub/
+**/frontend/build/
+**/frontend/coverage/
+**/frontend/flutter_*.png
+**/frontend/outputs/
+**/frontend/*.aab
+**/frontend/*.apk
+**/frontend/*.ipa
+**/frontend/*.lock
+**/frontend/*.log
+**/frontend/.flutter-plugins
+**/frontend/.flutter-plugins-dependencies
+**/frontend/lib/generated_plugin_registrant.dart
+**/frontend/web/generated_plugin_registrant.dart
+
+# iOS / Android build artifacts
+**/frontend/ios/Flutter/App.framework
+**/frontend/ios/Flutter/Flutter.framework
+**/frontend/ios/Flutter/Generated.xcconfig
+**/frontend/ios/ServiceDefinitions.json
+**/frontend/android/.gradle/
+**/frontend/android/.idea/
+**/frontend/android/local.properties
+**/frontend/android/app/build/
+**/frontend/android/gradlew
+**/frontend/android/gradlew.bat
+**/frontend/android/gradle/
+**/frontend/android/gradle-wrapper.jar
+**/frontend/android/key.properties
+
+# macOS / Windows builds
+**/frontend/macos/Flutter/
+**/frontend/macos/Pods/
+**/frontend/macos/.generated/
+**/frontend/windows/Flutter/
+**/frontend/windows/.generated/
+
+# Flutter signing / credentials
+**/frontend/*.keystore
+**/frontend/*.jks
+**/frontend/*.pem
+**/frontend/*.p12
+**/frontend/*.key
+
+####################################
+# ⚙️ NODE.JS / BACKEND (Express + PM2 + Sequelize)
+####################################
+**/backend/node_modules/
+**/backend/npm-debug.log*
+**/backend/yarn-error.log
+**/backend/pnpm-debug.log*
+
+# Environment / Configs
+**/backend/.env
+**/backend/.env.*
+**/backend/config/environment.js
+**/backend/config/environment-dev.js
+**/backend/config/environment-prod.js
+
+# Build / Transpiled files
+**/backend/dist/
+**/backend/build/
+**/backend/.cache/
+**/backend/.nyc_output/
+**/backend/coverage/
+**/backend/logs/
+**/backend/*.log
+
+# PM2 / Process files
+**/backend/pids
+**/backend/*.pid
+**/backend/*.seed
+**/backend/*.pid.lock
+
+# Sequelize / ORM
+**/backend/sequelize-meta.json
+**/backend/migrations/.cache/
+
+# Uploads / Static files
+**/backend/uploads/
+**/backend/tmp/
+**/backend/storage/
+**/backend/public/uploads/
+**/backend/media/
+
+# Docker
+**/backend/.docker/
+**/backend/docker-compose.override.yml
+**/backend/Dockerfile.local
+
+# AWS / Keys
+**/backend/.aws/
+**/backend/*.pem
+**/backend/*.key
+**/backend/*.crt
+**/backend/*.csr
+
+####################################
+# 🧩 OTHER PLATFORM / MISC
+####################################
+app.*.symbols
+app.*.map.json
