@@ -2,65 +2,63 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:upandout/models/post.dart';
 import 'package:upandout/models/category.dart';
+import 'package:upandout/config.dart'; // import your key
 
 class ApiService {
-  static const String baseUrl = 'http://localhost:4000/api';
+  static const String unsplashBase = 'https://api.unsplash.com';
 
-  /*
-  // === ORIGINAL BACKEND VERSION ===
   static Future<List<Post>> fetchPosts(String city, [String? tag]) async {
-    final url = Uri.parse('$baseUrl/posts?city=$city${tag != null ? "&tag=$tag" : ""}');
-    final res = await http.get(url);
-    if (res.statusCode == 200) {
-      List data = json.decode(res.body);
-      return data.map((e) => Post.fromJson(e)).toList();
-    } else {
-      throw Exception('Failed to fetch posts');
+    final query = Uri.encodeComponent('${tag ?? "explore"} $city');
+    final url = Uri.parse(
+        '$unsplashBase/search/photos?query=$query&per_page=20&orientation=portrait&client_id=$UNSPLASH_ACCESS_KEY');
+
+    try {
+      final res = await http.get(url);
+      if (res.statusCode == 200) {
+        final data = json.decode(res.body);
+        final results = data['results'] as List;
+        return results
+            .map(
+              (e) => Post(
+                id: e['id'],
+                imageUrl: e['urls']['regular'],
+                caption: e['description'] ??
+                    e['alt_description'] ??
+                    '${tag ?? city} vibes',
+                city: city,
+                tags: [tag ?? 'explore'],
+              ),
+            )
+            .toList();
+      } else {
+        print('Unsplash API error: ${res.statusCode}');
+      }
+    } catch (e) {
+      print('Error fetching Unsplash data: $e');
     }
+
+    // fallback placeholder images
+    return List.generate(
+      8,
+      (i) => Post(
+        id: '$i',
+        imageUrl: 'https://picsum.photos/seed/${tag ?? city}$i/600/800',
+        caption: '${tag ?? city} vibes #$i',
+        city: city,
+        tags: [tag ?? 'fallback'],
+      ),
+    );
   }
 
   static Future<List<Category>> fetchCategories() async {
-    final url = Uri.parse('$baseUrl/categories');
-    final res = await http.get(url);
-    if (res.statusCode == 200) {
-      List data = json.decode(res.body);
-      return data.map((e) => Category.fromJson(e)).toList();
-    } else {
-      throw Exception('Failed to fetch categories');
-    }
-  }
-  */
-
-  // === TEMPORARY MOCK VERSION USING UNSPLASH ===
-  static Future<List<Post>> fetchPosts(String city, [String? tag]) async {
-  await Future.delayed(const Duration(milliseconds: 500));
-
-  final sampleImages = List.generate(
-    10,
-    (i) => Post(
-      id: '$i',
-      imageUrl:
-          'https://picsum.photos/seed/${i + DateTime.now().millisecondsSinceEpoch}/600/800',
-      caption: '${tag ?? city} vibe spot #$i',
-      city: city,
-      tags: [tag ?? 'vibes'],
-    ),
-  );
-
-  return sampleImages;
-}
-
-
-  // === TEMPORARY MOCK CATEGORIES ===
-  static Future<List<Category>> fetchCategories() async {
-    await Future.delayed(const Duration(milliseconds: 300));
-    final categories = [
+    await Future.delayed(const Duration(milliseconds: 200));
+    return [
       Category(name: 'Chill'),
-      Category(name: 'Thrifting'),
       Category(name: 'Eats'),
       Category(name: 'Romance'),
-      Category(name: 'More'),
+      Category(name: 'Nightlife'),
+      Category(name: 'Thrifting'),
+      Category(name: 'Adventure'),
     ];
-    return categories;
   }
 }
