@@ -7,6 +7,7 @@ import 'package:upandout/widgets/image_card.dart';
 import 'package:upandout/widgets/search_bar.dart';
 import 'package:upandout/screens/image_detail_screen.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:upandout/widgets/location_selector.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,7 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dallas • World view"),
+        backgroundColor: Colors.black,
+        title: LocationSelector(
+          onLocationChanged: (country, state, city) {
+            Provider.of<DataProvider>(context, listen: false)
+                .filterByTag(city.toLowerCase());
+          },
+        ),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.map_outlined),
@@ -45,6 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+
+
       body: Column(
         children: [
           SearchBarWidget(controller: _searchController, onSearch: _onSearch),

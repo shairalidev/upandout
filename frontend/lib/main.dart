@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:upandout/screens/login_screen.dart';
 import 'package:upandout/providers/data_provider.dart';
-import 'package:upandout/screens/home_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:upandout/theme.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class UpAndOutApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'UP&OUT',
         theme: AppTheme.darkTheme,
-        home: const HomeScreen(),
+        home: const LoginScreen(),
       ),
     );
   }
